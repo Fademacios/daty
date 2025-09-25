@@ -38,30 +38,29 @@
 
     <script>
         function calculateTimeDifference() {
-            // Pobranie dzisiejszej daty
+
             let today = new Date();
 
-            // Pobranie wczorajszej daty (odejmujemy jeden dzień)
             let yesterday = new Date(today);
             yesterday.setDate(today.getDate() - 1);
 
-            // Obliczenie różnicy czasu między dzisiaj a wczoraj
-            let timeDifference = today - yesterday; // różnica w milisekundach
 
-            // Przekonwertowanie różnicy czasu na godziny, minuty, sekundy
+            let timeDifference = today - yesterday;
+
+            let days = Math.floor(timeDifference / (1000 * 60 * 00 * 24));
             let hours = Math.floor(timeDifference / (1000 * 60 * 60));
             let minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
             let seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
 
-            // Wyświetlenie różnicy na stronie
+
             document.getElementById("time-difference").innerHTML = 
-                `Różnica czasu między dzisiaj a wczoraj: ${hours} godzin, ${minutes} minut, ${seconds} sekund.`;
+                `Różnica czasu między dzisiaj a wczoraj: ${days} dni, ${hours} godzin, ${minutes} minut, ${seconds} sekund.`;
         }
 
-        // Ustawienie interwału na 1 minutę (60000 ms)
+
         setInterval(calculateTimeDifference, 60000);
 
-        // Obliczamy różnicę od razu po załadowaniu strony
+
         calculateTimeDifference();
     </script>
 </body>
